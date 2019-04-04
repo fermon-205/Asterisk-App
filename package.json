@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --ssl true --ssl-cert /Users/fermongrays/Desktop/certs/generate-trusted-ssl-certificate/server.crt --ssl-key /Users/fermongrays/Desktop/certs/generate-trusted-ssl-certificate/server.key ",
+    "start": "ng serve --host 0.0.0.0 --ssl true --ssl-cert /root/certs/generate-trusted-ssl-certificate/server.crt --ssl-key /root/certs/generate-trusted-ssl-certificate/server.key ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
