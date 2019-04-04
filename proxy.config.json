@@ -1,0 +1,6 @@
+{
+  "ws://10.214.10.47:8088/asterisk/ws":{
+    "target":"http://localhost:4200"
+  }
+
+}

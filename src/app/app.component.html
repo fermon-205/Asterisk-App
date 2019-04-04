@@ -1,0 +1,88 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Caption1 Brings the best Caption service to everyone</h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+  <h1>Nice input box</h1>
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div id="user-data">
+    <div class="form-group">
+      <label for="authorizationUser"> authorizationUser</label>
+      <input type="text" id="authorizationUser" class="form-control" ngModel name="authorizationUser">
+      <label for="passWord"> passWord</label>
+      <input type="text" id="passWord" class="form-control" ngModel name="passWord">
+      <label for="displayName"> displayName</label>
+      <input type="text" id="displayName" class="form-control" ngModel name="displayName">
+      <label for="uri"> uri</label>
+      <input type="text" id="uri" class="form-control" ngModel name="uri">
+      <button class="btn-primary" type="submit"></button>
+    </div>
+    </div>
+  </form>
+  <form>
+    <textarea (input)="inputData($event)" name="message" rows="2" class="question" id="WebSocket" required autocomplete="off"></textarea>
+    <label><span>Send Data Character by Character</span></label>
+  </form>
+  <button id="pick-up call" (click)="pickUPbutton()">Pick-Up</button>
+<p> {{textInput}}</p>
+  <body>
+  <audio id="remoteAudio"></audio>
+  <audio id="localAudio" ></audio>
+
+  <div id="content-video-audio">
+    <h2>In-browser Video Chat is Now a Breeze</h2>
+    <h4 class="intro">Here's a demo. Start a video chat between Femron and Whoever.</h4>
+    <div class="two-column-boxes">
+      <div class="column-box">
+        <div class="demo-window">
+          <div class="demo-view">
+            <video controls autoplay="autoplay" muted="muted" style="width:640px;height:360px;"  id="localVideo"></video>
+          </div>
+          <div class="left">
+            <h4>Fermon</h4>
+            <h5>Demo user one</h5>
+          </div>
+          <button id="alice-video-button" class="right" type="button">video</button>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="column-box">
+        <div class="demo-window">
+          <div class="demo-view">
+            <video controls autoplay="autoplay" muted="muted" style="width:640px;height:360px;" id="remoteVideo"></video>
+          </div>
+          <div class="left">
+            <h4>other users view</h4>
+            <h5>Demo user two</h5>
+          </div>
+          <button id="bob-video-button" class="right" type="button">video</button>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <svg class="arrow mobile-hide demo-arrow" width="60" height="34" viewbox="0 0 80 45">
+      <polygon points="40,5 75,40 5,40"></polygon>
+    </svg>
+  </div>
+
+  </body>
+  <button id="dial "(click)="contactphoneUser()">Dial</button>
+  <button id="end-Call "(click)="creatAsteriskEndpoint()">Register_withAsterisk</button>
+
+</ul>
+
