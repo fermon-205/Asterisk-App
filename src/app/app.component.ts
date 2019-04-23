@@ -95,7 +95,10 @@ export class AppComponent {
   }
 
   contactphoneUser(): void {
+
      this.session = this.userAgent.invite( this.asterikLoginData.callto + '@10.214.10.47', this.options);
+
+     this.session = this.userAgent.invite('4059@10.214.10.47', this.options);
     this.session.on('trackAdded', function () {
       const pc = this.sessionDescriptionHandler.peerConnection;
       this.remoteVideo = <HTMLMediaElement>document.getElementById('remoteVideo');
