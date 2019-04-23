@@ -76,7 +76,7 @@ export class AppComponent {
         password: this.asterikLoginData.password,
         displayName: this.asterikLoginData.displayName,
         transportOptions: {
-          wsServers: 'wss://10.214.10.47:8089/asterisk/ws',
+          wsServers: 'ws://10.214.10.47:8088/asterisk/ws',
         },
       hackIpInContact: true,
       }
