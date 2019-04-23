@@ -1,10 +1,11 @@
-import {Component, ViewChild} from '@angular/core';
-import {InviteClientContext, Session} from 'sip.js/types/session';
-import * as SIP from 'sip.js/dist/sip-0.13.6.min';
-import {ClientContext, ServerContext, SessionDescriptionHandler} from 'sip.js';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {InviteClientContext, InviteServerContext, Session} from 'sip.js/types/session';
+import * as SIP from 'sip.js/dist/sip-0.13.7.min';
+import {C, ClientContext, ServerContext, SessionDescriptionHandler} from 'sip.js';
 import {UA} from 'sip.js/types/ua';
 import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -13,16 +14,21 @@ import {NgForm} from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild ('f') asteriskData: NgForm;
+  @ViewChild ('audioOption') audioRef: ElementRef;
   title = 'Caption';
   session: Session;
+  sipSession: any;
   _WebSocketConnection: WebSocket;
   textInput = '';
   sessionDescriptionHandler: SessionDescriptionHandler;
   userAgent: SIP;
+  datalooader: String;
+  InviteServerContext: InviteServerContext;
   remoteVideo: HTMLMediaElement;
   localVideo: HTMLMediaElement;
   localAudio: HTMLMediaElement;
   remoteAudio: HTMLMediaElement;
+  crd: any;
   authorizationUser: number;
   password: number;
   displayName: string;
@@ -31,7 +37,8 @@ export class AppComponent {
     authorizationUser: '',
     displayName: '',
     password: '',
-    uri: ''
+    uri: '',
+    callto: ''
   };
 
    options = {
@@ -46,8 +53,9 @@ export class AppComponent {
     audio: true,
     video: true
   };
-    onSubmit(form: NgForm) {
-      console.log(form)
+
+  onSubmit(form: NgForm) {
+      console.log(form);
       this.asteriskData.form.patchValue({
         asteriskinfo: {
         }
@@ -56,9 +64,12 @@ export class AppComponent {
        this.asterikLoginData.displayName = form.form.value.displayName;
          this.asterikLoginData.password = form.form.value.passWord;
            this.asterikLoginData.uri = form.form.value.uri;
+           this.asterikLoginData.callto = form.form.value.callto;
     }
   creatAsteriskEndpoint() {
-      console.log(this.asterikLoginData.password + this.asterikLoginData.uri + this.asterikLoginData.displayName + this.asterikLoginData.authorizationUser + '***************');
+
+    this._WebSocketConnection = new WebSocket('ws://localhost:8080/web_war_exploded/websocket');
+    console.log(this.asterikLoginData.password + this.asterikLoginData.uri + this.asterikLoginData.displayName + this.asterikLoginData.authorizationUser + '***************');
     this.userAgent = new SIP.UA({
         uri: this.asterikLoginData.uri,
         authorizationUser: this.asterikLoginData.authorizationUser,
@@ -66,10 +77,15 @@ export class AppComponent {
         displayName: this.asterikLoginData.displayName,
         transportOptions: {
           wsServers: 'wss://10.214.10.47:8089/asterisk/ws',
-
-        }
+        },
+      hackIpInContact: true,
       }
     );
+    this.userAgent.on('invite', (session) => {
+      this.sipSession = session;
+
+      this.audioRef.nativeElement.play();
+    });
   }
 
 
@@ -79,7 +95,7 @@ export class AppComponent {
   }
 
   contactphoneUser(): void {
-     this.session = this.userAgent.invite('4063@10.214.10.47', this.options);
+     this.session = this.userAgent.invite( this.asterikLoginData.callto + '@10.214.10.47', this.options);
     this.session.on('trackAdded', function () {
       const pc = this.sessionDescriptionHandler.peerConnection;
       this.remoteVideo = <HTMLMediaElement>document.getElementById('remoteVideo');
@@ -104,37 +120,40 @@ export class AppComponent {
       this.localVideo.srcObject = localStream;
       this.localVideo.play();
     });
-  }
-  pickUPbutton(): void {
-      this.session = this.userAgent.on('invite', (session) => session.accept());
-    console.log('Hello boy ****************************83278937593');
-    this.session.on('accepted', function () {
-      console.log('Inside track added');
-      const pc = this.sessionDescriptionHandler.peerConnection;
-      this.remoteAudio = <HTMLMediaElement>document.getElementById('remoteAudio');
-      this.localAudio = <HTMLMediaElement>document.getElementById('localAudio');
 
-      // Gets remote tracks
-      const remoteStream = new MediaStream();
-      pc.getReceivers().forEach(function (receiver) {
-        remoteStream.addTrack(receiver.track);
-        if (remoteStream === null) {
-          console.log('fermon this shit is null the wholetime');
-        }
-      });
-      this.remoteAudio.srcObject = remoteStream;
-      this.remoteAudio.play();
-
-
-      const localStream = new MediaStream();
-      pc.getSenders().forEach(function (sender) {
-        localStream.addTrack(sender.track);
-      });
-      this.localAudio.srcObject = localStream;
-      this.localAudio.play();
-    });
 
   }
+   pickupPhone(): void {
+
+     this.sipSession.accept();
+     this.audioRef.nativeElement.pause();
+     const pc = this.sipSession.sessionDescriptionHandler.peerConnection;
+     this.remoteAudio = <HTMLMediaElement>document.getElementById('remoteAudio');
+     this.localAudio = <HTMLMediaElement>document.getElementById('localAudio');
+
+     // Gets remote tracks
+     const remoteStream = new MediaStream();
+     pc.getReceivers().forEach(function (receiver) {
+       remoteStream.addTrack(receiver.track);
+       if (remoteStream === null) {
+         console.log('fermon this shit is null the whole time');
+       }
+     });
+     this.remoteAudio.srcObject = remoteStream;
+     this.remoteAudio.play();
+
+
+     const localStream = new MediaStream();
+     pc.getSenders().forEach(function (sender) {
+       localStream.addTrack(sender.track);
+     });
+     this.localAudio.srcObject = localStream;
+     this.localAudio.play();
+
+    }
+
+
+
 
 }
 

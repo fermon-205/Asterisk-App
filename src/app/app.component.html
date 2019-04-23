@@ -6,18 +6,11 @@
   <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
 <h2>Caption1 Brings the best Caption service to everyone</h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
   <h1>Nice input box</h1>
-
+<audio style="display: none" #audioOption controls>
+  <source src='./assets/cartoon-telephone_daniel_simion.wav' type="audio/wav">
+  Browser not support audio
+</audio>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div id="user-data">
     <div class="form-group">
@@ -29,7 +22,10 @@
       <input type="text" id="displayName" class="form-control" ngModel name="displayName">
       <label for="uri"> uri</label>
       <input type="text" id="uri" class="form-control" ngModel name="uri">
+      <label for="callto"> call</label>
+      <input type="text" id="callto" class="form-control" ngModel name="callto">
       <button class="btn-primary" type="submit"></button>
+
     </div>
     </div>
   </form>
@@ -37,7 +33,7 @@
     <textarea (input)="inputData($event)" name="message" rows="2" class="question" id="WebSocket" required autocomplete="off"></textarea>
     <label><span>Send Data Character by Character</span></label>
   </form>
-  <button id="pick-up call" (click)="pickUPbutton()">Pick-Up</button>
+  <button class="flashing_effect" id="pick-up call" (click)="pickupPhone()">Pick-Up</button>
 <p> {{textInput}}</p>
   <body>
   <audio id="remoteAudio"></audio>
@@ -45,12 +41,12 @@
 
   <div id="content-video-audio">
     <h2>In-browser Video Chat is Now a Breeze</h2>
-    <h4 class="intro">Here's a demo. Start a video chat between Femron and Whoever.</h4>
+    <h4 class="intro">Here's a demo. Start a video chat between Fermon G and Whoever.</h4>
     <div class="two-column-boxes">
       <div class="column-box">
         <div class="demo-window">
           <div class="demo-view">
-            <video controls autoplay="autoplay" muted="muted" style="width:640px;height:360px;"  id="localVideo"></video>
+            <video controls autoplay="autoplay" muted="muted" style="width:690px;height:360px;"  id="localVideo"></video>
           </div>
           <div class="left">
             <h4>Fermon</h4>
@@ -63,7 +59,7 @@
       <div class="column-box">
         <div class="demo-window">
           <div class="demo-view">
-            <video controls autoplay="autoplay" muted="muted" style="width:640px;height:360px;" id="remoteVideo"></video>
+            <video controls autoplay="autoplay" muted="muted" style="width:690px;height:360px;" id="remoteVideo"></video>
           </div>
           <div class="left">
             <h4>other users view</h4>
@@ -79,10 +75,27 @@
       <polygon points="40,5 75,40 5,40"></polygon>
     </svg>
   </div>
-
   </body>
   <button id="dial "(click)="contactphoneUser()">Dial</button>
   <button id="end-Call "(click)="creatAsteriskEndpoint()">Register_withAsterisk</button>
 
-</ul>
+<!--<div>-->
+<!--  <mat-table [dataSource]="dataSource">-->
+<!--    <ng-container matColumnDef="AltStaffNumber">-->
+<!--      <mat-header-cell *matHeaderCellDef> AltStaffNumber </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let Staff"> {{Staff.AltStaffNumber}} </mat-cell>-->
+<!--    </ng-container>-->
+<!--    <ng-container matColumnDef="CountryOfResidenceId">-->
+<!--      <mat-header-cell *matHeaderCellDef> CountryOfResidenceId </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let Staff"> {{Staff.CountryOfResidenceId}} </mat-cell>-->
+<!--    </ng-container>-->
+<!--    <ng-container matColumnDef="DateOfBirth">-->
+<!--      <mat-header-cell *matHeaderCellDef> DateOfBirth </mat-header-cell>-->
+<!--      <mat-cell *matCellDef="let Staff"> {{Staff.DateOfBirth}} </mat-cell>-->
+<!--    </ng-container>-->
+
+<!--    <mat-header-row *matHeaderRowDef=""></mat-header-row>-->
+<!--    <mat-row *matRowDef="let blahblah; columns: displayedColumn;"></mat-row>-->
+<!--  </mat-table>-->
+<!--</div>-->
 
