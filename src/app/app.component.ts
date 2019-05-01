@@ -20,9 +20,11 @@ export class AppComponent {
   sipSession: any;
   _WebSocketConnection: WebSocket;
   textInput = '';
+  RTCRtpCapabilities: RTCRtpCapabilities;
   sessionDescriptionHandler: SessionDescriptionHandler;
   userAgent: SIP;
   datalooader: String;
+  RTCConfiguration: RTCConfiguration;
   InviteServerContext: InviteServerContext;
   remoteVideo: HTMLMediaElement;
   localVideo: HTMLMediaElement;
@@ -44,8 +46,8 @@ export class AppComponent {
    options = {
      sessionDescriptionHandlerOptions: {
        constraints: {
-         audio: true,
-         video: true
+         video: true,
+         audio: true
        }
      }
    };
@@ -97,7 +99,7 @@ export class AppComponent {
   contactphoneUser(): void {
 
      this.session = this.userAgent.invite( this.asterikLoginData.callto + '@10.214.10.47', this.options);
-     
+
     this.session.on('trackAdded', function () {
       const pc = this.sessionDescriptionHandler.peerConnection;
       this.remoteVideo = <HTMLMediaElement>document.getElementById('remoteVideo');
@@ -107,13 +109,12 @@ export class AppComponent {
       const remoteStream = new MediaStream();
       pc.getReceivers().forEach(function (receiver) {
         remoteStream.addTrack(receiver.track);
-        if (remoteStream === null) {
-          console.log('fermon this shit is null the whole time');
+        if (true) {
+          console.log('fermon this shit was null the whole time');
         }
       });
       this.remoteVideo.srcObject = remoteStream;
       this.remoteVideo.play();
-
 
       const localStream = new MediaStream();
       pc.getSenders().forEach(function (sender) {
