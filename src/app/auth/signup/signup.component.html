@@ -1,0 +1,32 @@
+<div class="authWrapper">
+  <!-- Login Wrapper Start -->
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col-md-5 logincontent">
+        <div class="innerSection text-center ">
+          <div class="authHeader pt-4 pb-4">
+              <img src="assets/images/wa-logo-with-shadow.png">
+            <h4 class="pt-4">SIGN UP</h4>
+          </div>
+          <div class="authBody pt-2 tb-3 px-5">
+            <form class="form-data" [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)">
+              <div class="form-group pb-2" >
+                <input type="text" class="form-control input1" formControlName="username" placeholder="full name">
+              </div>
+              <div class="form-group pb-2">
+                <input type="email" class="form-control input2" formControlName="email" placeholder="e-mail address">
+              </div>
+              <div class="form-group pb-2">
+                <input type="password" class="form-control input3" formControlName="password" placeholder="password">
+              </div>
+              <button type="submit" [disabled]="!signupForm.valid"  class="btn">SIGN UP</button>
+            </form>
+          </div>
+          <div class="authFooter py-3">
+            <p class="pt-2 pb-2">Already have an account ? <a routerLink="/auth/login">Sign In</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- Login Wrapper End -->

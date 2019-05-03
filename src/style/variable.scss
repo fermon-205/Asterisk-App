@@ -1,0 +1,64 @@
+//Add font family 
+
+
+@font-face{
+    font-family: Poppins-Regular;
+    src: url('/assets/fonts/Poppins-Regular.ttf');
+}
+@font-face{
+    font-family: Poppins-Medium;
+    src: url('/assets/fonts/Poppins-Medium.ttf');
+}
+@font-face{
+    font-family: Poppins-Light;
+    src: url('/assets/fonts/Poppins-Light.ttf');
+}
+@font-face{
+    font-family: Poppins-SemiBold;
+    src: url('/assets/fonts/Poppins-SemiBold.ttf');
+}
+@font-face{
+    font-family: Poppins-Bold;
+    src: url('/assets/fonts/Poppins-Bold.ttf');
+}
+
+
+// // Fonts Family
+
+
+$p-Regular :  Poppins-Regular;
+$p-medium : Poppins-Medium;
+$p-light : Poppins-Light; 
+$p-semiBold : Poppins-SemiBold; 
+$p-bold : Poppins-Bold; 
+
+// Fonts Size
+$font-10 : 10px;
+$font-12 : 12px;
+$font-13 : 13px;
+$font-14 : 14px;
+$font-15 : 15px;
+$font-16 : 16px;
+$font-17 : 17px;
+$font-18 : 18px;
+$font-20 : 20px;
+$font-22 : 22px;
+$font-24 : 24px;
+$font-26 : 26px;
+$font-28 : 28px;
+$font-30 : 30px;
+$font-32 : 32px;
+$font-34 : 34px;
+$font-36 : 36px;  
+$font-45 : 45px;
+$font-60 : 60px;
+
+
+// Fonts Colors
+$gd-img :  linear-gradient(to right, #001c6f, #371c74, #551c76, #6f1b77, #871c77);
+$btn-light : #F4EFF4;
+$themeColor : #0C2675;
+$white : #fff;
+$black : #000;
+
+$light-g : #6B6A6A;

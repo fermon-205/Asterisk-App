@@ -1,0 +1,49 @@
+@import '../../../style/variable.scss';
+.loginWrapper {
+  background-image: url("/assets/images/web-app-background.jpg");
+  height: 100vh;
+  background-size: cover;
+  .innerSection {
+    background-color: #F9F9F9;
+  }
+  .loginHeader {
+    img {
+      max-height: 60px;
+    }
+    h5{
+        font-family: $p-Regular;
+    }
+    color: #fff;
+    background-image: url("/assets/images/curve-shape.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  }
+  .loginBody{
+      a{
+        border-radius: 20px;
+        padding:12px 0;
+        font-family: $p-medium;
+        letter-spacing: 1px;
+      }
+      a:first-child{
+        background-color: $btn-light;
+      }
+      a:nth-child(2){
+        background-image: $gd-img;
+        color:#fff;
+      }
+  }
+  .loginFooter{
+    box-shadow: 0px 0px 4px -2px rgba(0,0,0,0.4);
+      p{
+          margin-bottom: 0;
+          color:$light-g ;
+          font-size: $font-14;
+          a{
+              color: $themeColor;
+              text-decoration: none;
+          }
+      }
+  }
+}

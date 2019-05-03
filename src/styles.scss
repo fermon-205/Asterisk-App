@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import './style/variable.scss';
+
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6{
+    font-family: $p-medium;
+    letter-spacing: 1px;
+}
+
+body p{
+    font-family: $p-Regular;
+    letter-spacing: 1px;
+    
+}
