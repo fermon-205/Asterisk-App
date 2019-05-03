@@ -87,6 +87,33 @@ export class AppComponent {
       this.sipSession = session;
 
       this.audioRef.nativeElement.play();
+
+      this.sipSession.on('trackAdded', function () {
+        const pc = this.sessionDescriptionHandler.peerConnection;
+        this.remoteVideo = <HTMLMediaElement>document.getElementById('remoteVideo');
+        this.localVideo = <HTMLMediaElement>document.getElementById('localVideo');
+
+        // Gets remote tracks
+        const remoteStream = new MediaStream();
+        pc.getReceivers().forEach(function (receiver) {
+          remoteStream.addTrack(receiver.track);
+          if (true) {
+            console.log('fermon this shit was null the whole time');
+          }
+        });
+        this.remoteVideo.srcObject = remoteStream;
+        this.remoteVideo.play();
+
+        const localStream = new MediaStream();
+        pc.getSenders().forEach(function (sender) {
+          localStream.addTrack(sender.track);
+        });
+        this.localVideo.srcObject = localStream;
+        this.localVideo.play();
+      });
+
+
+
     });
   }
 
@@ -130,30 +157,32 @@ export class AppComponent {
 
      this.sipSession.accept();
      this.audioRef.nativeElement.pause();
-     const pc = this.sipSession.sessionDescriptionHandler.peerConnection;
-     this.remoteAudio = <HTMLMediaElement>document.getElementById('remoteAudio');
-     this.localAudio = <HTMLMediaElement>document.getElementById('localAudio');
+     // const pc = this.sipSession.sessionDescriptionHandler.peerConnection;
+     // this.session.on('trackAdded', function () {
+     //   const pc = this.sessionDescriptionHandler.peerConnection;
+     //   this.remoteVideo = <HTMLMediaElement>document.getElementById('remoteVideo');
+     //   this.localVideo = <HTMLMediaElement>document.getElementById('localVideo');
+     //
+     //   // Gets remote tracks
+     //   const remoteStream = new MediaStream();
+     //   pc.getReceivers().forEach(function (receiver) {
+     //     remoteStream.addTrack(receiver.track);
+     //     if (true) {
+     //       console.log('fermon this shit was null the whole time');
+     //     }
+     //   });
+     //   this.remoteVideo.srcObject = remoteStream;
+     //   this.remoteVideo.play();
+     //
+     //   const localStream = new MediaStream();
+     //   pc.getSenders().forEach(function (sender) {
+     //     localStream.addTrack(sender.track);
+     //   });
+     //   this.localVideo.srcObject = localStream;
+     //   this.localVideo.play();
+     // });
 
-     // Gets remote tracks
-     const remoteStream = new MediaStream();
-     pc.getReceivers().forEach(function (receiver) {
-       remoteStream.addTrack(receiver.track);
-       if (remoteStream === null) {
-         console.log('fermon this shit is null the whole time');
-       }
-     });
-     this.remoteAudio.srcObject = remoteStream;
-     this.remoteAudio.play();
-
-
-     const localStream = new MediaStream();
-     pc.getSenders().forEach(function (sender) {
-       localStream.addTrack(sender.track);
-     });
-     this.localAudio.srcObject = localStream;
-     this.localAudio.play();
-
-    }
+   }
 
 
 
