@@ -1,0 +1,37 @@
+@import '../../../style/variable.scss';
+
+nav.navbar{
+ box-shadow:  0px 0px 50px 6px rgba(0, 0, 0, 0.1);
+}
+.searchBox {
+  input {
+    background-image: url("/assets/images/search.png");
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: 10px 50%; 
+    padding-left: 45px; 
+    border-radius: 0; 
+    width:280px;
+  }
+}
+
+.navbar-nav{
+    li{
+        margin-left:30px;
+        line-height: 45px;
+        a{
+            font-family: $p-medium;
+            letter-spacing: 1px;
+            span{
+                background-color: #A9E6E1;
+                color: #40BFB6;
+                height: 22px;
+                width: 22px;
+                display: inline-block;
+                text-align: center;
+                border-radius: 50%;
+                line-height: 22px;
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+<main-header></main-header>
+<div class="main pt-5 pb-5">
+    <div class="container">
+        <div class="row blockSection">
+            <div class="col-md-4 block1">
+                <div class="leftBar">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#call">Calls</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#contact">Contacts</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div id="call" class="container tab-pane active">
+                            <div class="pheading text-center">
+                                <div class="left_b">
+                                    <h6>All Calls</h6>
+                                </div>
+                                <div class="right_b">
+                                    <a href="javascript:void(0)" id="callFillter" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="callFillter">
+                                        <a class="dropdown-item" href="#">All Calls</a>
+                                        <a class="dropdown-item" href="#">Incoming Calls</a>
+                                        <a class="dropdown-item" href="#">Outgoing Calls</a>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+                            <div class="call_block">
+                                <div class="callList" *ngFor="let call of calls">
+                                    <div class="row">
+                                        <div class="col-md-9 col-sm-9">
+                                            <h4>{{call.name}} <span>{{call.no}}</span></h4>
+                                            <p><img src="/assets/images/missed-calll-icon.png" /> incoming {{call.time}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 ">
+                                            <a class="phoneIcon" href=""><img src="/assets/images/phone-icon.png" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="contact" class="container tab-pane fade">
+                            <div class="pheading text-center">
+                                <div class="left_b">
+                                    <h6>All Contacts</h6>
+                                </div>
+                                <div class="right_b">
+                                    <a href="javascript:void(0)" id="contactFillter" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"><i class="fa fa-angle-down"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="contactFillter">
+                                        <a class="dropdown-item" href="#">All Contact</a>
+                                        <a class="dropdown-item" href="#">Family</a>
+                                        <a class="dropdown-item" href="#">Group</a>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="call_block">
+                                <div class="callList" *ngFor="let contact of contacts">
+                                    <a class="contactLink" routerLink="/app/detail">
+                                        <div class="row">
+                                            <div class="col-md-2 col-sm-2 userImg">
+                                                <img src="/assets/images/user-img.png" />
+                                            </div>
+                                            <div class="col-md-9 col-sm-9">
+                                                <h4 class="username">{{contact.name}}</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dialPad mt-3 py-3">
+                        <div class="row">
+                            <div class="col-md-6 dial">
+                                <a routerLink="/app" href="javascript:void(0);"><img
+                                        src="/assets/images/dial-pad.png" /></a>
+                            </div>
+                            <div class="col-md-6 video">
+                                <a class="float-right" routerLink="/app/videocall"><img
+                                        src="/assets/images/video-call.png" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 block2">
+                <div class="rightBlock">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <main-footer></main-footer> -->
