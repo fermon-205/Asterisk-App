@@ -4,10 +4,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+// import { NumberDirective } from './core/directives/numbers-only.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // NumberDirective
   ],
   imports: [
     BrowserModule,

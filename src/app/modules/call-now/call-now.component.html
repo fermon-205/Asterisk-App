@@ -1,3 +1,86 @@
-<p>
-  call-now works!
-</p>
+<div class="detail">
+  <div class="detailHeader pt-3 pb-3 mb-3">
+    <!-- Dial pad Header-->
+    <div class="row">
+      <div class="col-md-3 col-sm-3 icons">
+        <a class="pl-3 pt-2" href="javascript:void(0)"><img src="/assets/images/cross.png" /></a>
+      </div>
+      <div class="col-md-6 col-sm-6 text-center dialNo">
+        <input type="text"  placeholder="enter number to dial" [(ngModel)]="value" numbersOnly/>
+      </div>
+      <div class="col-md-3 col-sm-3 icons text-right">
+        <a class="pt-2 pr-3" href="javascript:void(0)"><img src="/assets/images/setting.png" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="detailbody px-5 pt-4">
+    <!--- Dial pad Start -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 col-sm-12">
+        <div class="row">
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(1)">
+            <span>1</span></div>
+          <div class="digit  col-md-4 col-sm-4 text-center" (click)="dial(2)"><span>2</span>
+            <div class="sub">abc</div>
+          </div>
+          <div class="digit  col-md-4 col-sm-4 text-center" (click)="dial(3)"><span>3</span>
+            <div class="sub">def</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(4)"><span>4</span>
+            <div class="sub">ghi</div>
+          </div>
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(5)"><span>5</span>
+            <div class="sub">jkl</div>
+          </div>
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(6)"><span>6</span>
+            <div class="sub">mno</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(7)"><span>7</span>
+            <div class="sub">pqrs</div>
+          </div>
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(8)"><span>8</span>
+            <div class="sub">tuv</div>
+          </div>
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(9)"><span>9</span>
+            <div class="sub">wxyz</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="digit digit_2 col-sm-4 col-md-4 text-center" (click)="dial('*')"><span>*</span>
+          </div>
+          <div class="digit col-md-4 col-sm-4 text-center" (click)="dial(0)"><span>0</span>
+          </div>
+          <div class="digit digit_2 col-md-4 col-sm-4 text-center" (click)="dial('#')"><span>#</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <!--- Dial Pad End-->
+  </div>
+  <div class="footerBtn mt-3 pt-4 pb-2">
+    <!-- Dial Action Start -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="row ">
+          <div class="col-md-4 col-sm-3 text-center">
+            <a href="javascript:void(0)"><img src="/assets/images/video-icon1.png" /></a>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center">
+            <button class="button">Call Now</button>
+          </div>
+          <div class="col-md-4 col-sm-3 text-center">
+            <a (click)="deleteNo()" href="javascript:void(0)"><i class="fa fa-angle-left"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div><!-- Dial Action End-->
+</div>
